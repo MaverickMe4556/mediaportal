@@ -1,0 +1,356 @@
+{% extends 'talks/base.html' %}
+{% load staticfiles%}
+<!-- .header-bottom-wrapper -->
+{% block content %}
+<div class="header-bottom-wrapper">
+  <div class="container">
+
+    <!-- .quote -->
+    <div class="quote">
+      <blockquote>
+
+        <!--span class="author"><span class="line left"></span>HAMILTON FISH<span class="line right"></span></span-->
+      </blockquote>
+    </div>
+    <!-- End of .quote -->
+
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="home-flexslider variation-2">
+
+          <!-- Slider -->
+          <div class="flexslider">
+
+            <div class="flex-viewport">
+              <ul class="slides">
+                {% for slider_phto in slider_photo %}
+                <li>
+                  <div class="slide-image">
+                    <a href="{{pressrelease.content.url}}" title="{{pressrelease.title}}">
+                      <img height=50% src="{{slider_phto.image.url}}" alt="alt text for release 1" draggable="false">
+                    </a>
+                  </div>
+
+                  <div class="slide-description">
+                    <h2 class="title">{{slider_phto.title}}</h2>
+                    <p>{{slider_phto.caption}}</p>
+                  </div>
+                </li>
+                {% endfor %}
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- blog-items -->
+
+<div class="blog-items">
+
+
+
+    <div class="container">
+
+
+
+        <div class="row">
+
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                <figure>
+
+                    <a title="Featured Dolor Ipsum Post" href="#">
+
+                        <img alt="post-featured" src="{% static 'images/hh.jpeg' %}" width="354" height="144"  >
+
+                    </a>
+
+                    <figcaption>T Hub IIIT Hyderabad</figcaption>
+
+                </figure>
+
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                <figure>
+
+                    <a title="Sample Image Post" href="#">
+
+                        <img alt="3rd-post"  src="{% static 'images/hi.jpeg' %}" width="354" height="144"  >
+
+                    </a>
+
+                   <figcaption>Life @IIIT Hyderabad</figcaption>
+
+                </figure>
+
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                <figure>
+
+                    <a title="Sample Post with Gallery Post Format" href="#">
+
+                        <img alt="4th-gallery-image"  src="{% static 'images/hhh.jpeg' %}"  width="354" height="144"    >
+
+                    </a>
+
+                    <figcaption>Library IIIT Hyderabad </figcaption>
+
+                </figure>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div><!-- End of .blog-items -->
+
+
+<!-- talks starts -->
+<div class="page-container container">
+
+        <div class="row">
+          <div role="main" class="main col-lg-8 col-md-8">
+
+                            <header>
+                                <h2 class="post-title"><a href="#">AVISHKAR</a></h2>
+                                <div class="post-meta clearfix">
+                                    <span>By</span> <a rel="author" title="Posts by John Doe" href="#">IIIT Hyderabad</a>
+                                    <span class="date"> on October 01, 2013 </span>
+                                    <span class="category">in <a title="View all posts in Culture" href="#">T Hub</a></span>
+                                </div><!-- end of post meta -->
+                            </header>
+                            <figure>
+                                <a title="Featured Dolor Ipsum Post" href="#">
+                                    <img alt="8th-post-featured" class="candidate-image wp-post-image" src="{% static 'images/13.jpg' %}"  width="754px" height="472px"   >
+                                </a>
+                            </figure>
+                            <p>An acceleration program for startups working with AI, IA and AR/VR...Focus on research based startups...10L seed money in convertible notes.</p>    <a class="pp-btn" href="#">Read More</a>
+
+                            <br>
+                            <br>
+                            <br>
+<div class="row post-grid-2-col">
+{% for talk in talks %}
+
+    <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
+
+<header>
+<h3 class="post-title" style="white-space: nowrap; overflow: hidden;"><a href="{% url 'talk_part' pk=talk.pk %}" title = "{{talk.topic}}"  >{{talk.topic}}</a></h3>
+
+                            <div class="post-meta clearfix">
+
+                                <span>By</span> <a rel="author" title="Speaker" href="#">{{talk.speaker}}</a>
+
+                                    <br>
+                                <span class="date"> {{talk.date_and_time}}</span>
+                                  <br>
+                                <span class="category">in <a title="Venue" href="#">{{talk.venue}}</a></span>
+
+                            </div><!-- end of post meta -->
+
+                        </header>
+
+<figure>
+<br>
+                            <a title="{{talk.speaker}}" href="#">
+
+<img src="{{ talk.image.url }}" class="candidate-image wp-post-image" alt="{{talk.speaker}}" width="354px" height="200px" />
+
+       </a>
+
+                        </figure>
+
+
+
+
+
+<a class="read-more" href="{% url 'talk_part' pk=talk.pk %}">...Read </a>
+
+
+                </div>
+
+{% endfor %}
+
+<!-- talks ends  -->
+
+
+</div>
+</div>
+
+<!-- start of sidebar -->
+        <aside role="complementary" class="col-lg-4 col-md-4 sidebar">
+
+            <section class="widget tabs-widget" id="tabs_widget-2">
+                <div class="tabbed">
+                    <ul class="tabs clearfix">
+                        <li class="current">Popular</li>
+                        <li>Latest</li>
+                        <li>Comments</li>
+                    </ul>
+                    <div class="block current">
+                        <ul class="widget-list">
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img alt="8th-post-featured" class="tabs-thumb wp-post-image" src="{% static 'images/hh.jpeg' %}" width="150" height="150">
+                                    </a>
+                                </figure>
+                                <h5><a href="#">T Hub IIIT Hyderabad</a></h5>
+                                <span>October 01, 2013 By</span> <a rel="author" title="Posts by John Doe" href="#">IIIT Hyderabad</a>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img alt="7th-post-featured" class="tabs-thumb wp-post-image" src="{% static 'images/hi.jpeg' %}"  width="150" height="150">
+                                    </a>
+                                </figure>
+                                <h5><a href="#">Life @ IIIT Hyderabad</a></h5>
+                                <span>October 01, 2013 By</span> <a rel="author" title="Posts by John Doe" href="#">Students</a>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img alt="9th-post-featured" class="tabs-thumb wp-post-image" src="{% static 'images/hhh.jpeg' %}"  width="150" height="150">
+                                    </a>
+                                </figure>
+                                <h5><a href="#">Library @ IIIT Hyderbad</a></h5>
+                                <span>October 01, 2013 By</span> <a rel="author" title="Posts by John Doe" href="#">IIIT Hyderbad</a>
+                            </li>
+                        </ul>
+                        <a class="pp-btn" href="#">View all Posts</a>
+                    </div>
+                    <div class="block">
+                        <ul class="widget-list">
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img alt="8th-post-featured" class="tabs-thumb wp-post-image" src="{% static 'images/hh.jpeg' %}" width="150" height="150">
+                                    </a>
+                                </figure>
+                                <h5>
+                                    <a href="#">T Hub IIIT Hyderabad</a></h5>
+                                <span>October 01, 2013 By</span> <a rel="author" title="Posts by John Doe" href="#">IIIT Hyderabad</a>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img alt="3rd-post" class="tabs-thumb wp-post-image"  src="{% static 'images/hi.jpeg' %}" width="150" height="150">
+                                    </a>
+                                </figure>
+                                <h5>
+                                    <a href="#">Life @IIIT Hyderabad</a>
+                                </h5>
+                                <span>October 01, 2013 By</span> <a rel="author" title="Posts by John Doe" href="#">Students</a>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img alt="5th-post-featured" class="tabs-thumb wp-post-image" src="{% static 'images/hhh.jpeg' %}"  width="150" height="150">
+                                    </a>
+                                </figure>
+                                <h5>
+                                    <a href="#">Library @ IIIT Hyderabad</a>
+                                </h5>
+                                <span>October 01, 2013 By</span> <a rel="author" title="Posts by John Doe" href="#">IIIT Hyderabad</a>
+                            </li>
+                        </ul>
+                        <a class="pp-btn" href="#">View all Posts</a>
+                    </div>
+                    <div class="block">
+                        <ul class="widget-list">
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img  class="avatar avatar-64 photo" src="{% static 'images/hh.jpeg' %}" width="150" height="150">
+                                    </a>
+                                </figure>
+                                <strong><a class="url" rel="external nofollow" href="#">T Hub IIIT Hyderabad</a></strong> on <strong>IIIT Hyderabad<a href="#"></a></strong>
+                                <span>Gaachibowli <a href="#">Read More</a></span>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img class="avatar avatar-64 photo" src="{% static 'images/hi.jpeg' %}" width="150" height="150">
+                                    </a>
+                                </figure>
+                                <strong><a class="url" rel="external nofollow" href="#">Life</a></strong> on <strong><a href="#">@</a></strong>
+                                <span>IIIT Hyderabad… <a href="#">Read More</a></span>
+                            </li>
+                            <li>
+                                <figure>
+                                    <a href="#">
+                                        <img class="avatar avatar-64 photo" src="{% static 'images/hhh.jpeg' %}"  width="150" height="150" >
+                                    </a>
+                                </figure>
+                                <strong><a class="url" rel="external nofollow" href="#">Library</a></strong> on <strong><a href="#">@</a></strong>
+                                <span>IIIT Hydrabad… <a href="#">Read More</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- end of tabbed div -->
+            </section>
+
+
+
+
+
+        </aside><!-- end of sidebar -->
+</div>
+</div>
+
+<!-- Time line (Trail) -->
+<div class="container timelines">
+
+    <h3 class="title-heading">Campaign Trail</h3>
+
+    <div class="timelines-wrapper">
+        <ul class="cycle-slideshow"
+            data-cycle-fx=flash
+            data-cycle-timeout=0
+            data-cycle-slides="> li"
+            data-cycle-auto-height="container"
+            data-cycle-pager="#per-slide-template"
+                >
+{% for event in events %}
+            <li class="campaign-trail-list-item" data-cycle-pager-template="<li><a href=#>{{event.date}}</a></li>" >
+                <a href="#"><img height=40px position="absolute" clip="rect(0px,60px,20px,0px)" class="img-responsive" src="{{event.image.url}}" alt="Event Banner" /></a>
+                <div class="detail">
+                    <h2>{{event.Title}}</h2>
+                    <p>{{event.date}}</p>
+                </div>
+            </li>
+{% endfor %}
+
+        </ul>
+
+        <!-- empty element for pager links -->
+        <div class="pager-wrapper">
+            <ul id=per-slide-template class="center external"></ul>
+            <div class="bottom-line"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+  {% endblock %}

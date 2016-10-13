@@ -1,0 +1,12 @@
+{% extends 'talks/base.html' %}
+
+{% block content %}
+{% for pressrelease in pressreleases %}
+    <div class="post">
+   <p><strong>Title: </stronge><a href="">{{pressrelease.Title}} </a></p>
+<div class="date">
+   <p><strong>Date & Time: </strong>{{pressrelease.date}} </p>
+</div>
+{% endfor %}
+
+{% endblock %}
