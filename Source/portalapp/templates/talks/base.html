@@ -26,6 +26,7 @@
         <!-- Political press has 4 skins, but you can use only one of them -->
         <link href="{% static 'css/skins/default.css' %}" rel="stylesheet" media="all">
         <!--<link rel="stylesheet" href="{% static 'css/talks.css' %}">-->
+       {% block extrastyles %}{% endblock %}
 
     </head>
 
@@ -44,7 +45,7 @@
 
         <div class="donate-now clearfix">
 
-            <a target="_blank" title="Donate Now" href="#">Log In</a>
+            <a target="_blank" title="login" href="#">Log In</a>
 
         </div>
 
@@ -89,21 +90,17 @@
 
 
 
-					 <li><a href="#">Gallery</a>
-             <ul>
-             							 <li><a href="{% url 'all_photo' %}">All</a></li>
+                     <li><a href="{% url 'album_list' %}">Gallery</a>
 
-             							 <li><a href="{% url 'campus' %}">Campus</a></li>
+                              </li>
 
-             							 <li><a href="{% url 'cult' %}">Cult</a></li>
+                              <li><a href="{% url 'events' %}">Events</a>
 
-             							 <li><a href="{% url 'acads' %}">Academics</a></li>
 
-             						 </ul>
 
-                    </li>
+                              </li>
 
-                    <li><a href="#">Press Realese</a>
+                              <li><a href="{% url 'pressrelease' %}">Press Realese</a>
 
 
 
@@ -173,21 +170,11 @@
                     <section class="widget widget_recent_entries" id="recent-posts-3">
                         <h3 class="title">Recent Posts</h3>
                         <ul>
+                          {% for event_recent in events_recent %}
                             <li>
-                                <a href="#">Featured Dolor Ipsum Post</a>
+                                <a href="#">{{event_recent.Title}}</a>
                             </li>
-                            <li>
-                                <a href="#">Sample Image Post</a>
-                            </li>
-                            <li>
-                                <a href="#">Sample Post with Featured Image</a>
-                            </li>
-                            <li>
-                                <a href="#">Sample Post with Gallery Post Format</a>
-                            </li>
-                            <li>
-                                <a href="#">Sample Video Post</a>
-                            </li>
+                          {% endfor %}
                         </ul>
                     </section>
                     <!-- End of .widget -->
@@ -215,10 +202,10 @@
                         <h3 class="title">Quick Links</h3>
                         <div class="menu-footer-menu-container">
                             <ul class="menu" id="menu-footer-menu">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Gallery</a></li>
-                                <li><a href="#">Biography</a></li>
+                                <li><a href="{% url 'pressrelease_short' %}">Home</a></li>
+                                <li><a href="{% url 'talks_list' %}">Talks</a></li>
+                                <li><a href="{% url 'album_list' %}">Gallery</a></li>
+                                <li><a href="{% url 'events' %}">Event</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
@@ -241,15 +228,15 @@
 
             <!-- Social Navigation -->
             <ul class="social-nav clearfix">
-                <li class="facebook"><a href="#" target="_blank"></a></li>
-                <li class="twitter"><a href="#" target="_blank"></a></li>
-                <li class="linkedin"><a href="#" target="_blank"></a></li>
-                <li class="youtube"><a href="#" target="_blank"></a></li>
-                <li class="skype"><a href="skype:#?add" target="_blank"></a></li>
+                <li class="facebook"><a href="https://www.facebook.com/IIITH/" target="_blank"></a></li>
+                <li class="twitter"><a href="https://twitter.com/IIIT_Hyderabad" target="_blank"></a></li>
+                <li class="linkedin"><a href="https://www.linkedin.com/company/iiit-hyderabad" target="_blank"></a></li>
+                <li class="youtube"><a href="https://www.youtube.com/channel/UCzCMyBy0VRoQBF8x-TsXTnQ" target="_blank"></a></li>
+                <!--li class="skype"><a href="skype:#?add" target="_blank"></a></li>
                 <li class="flickr"><a href="#" target="_blank"></a></li>
                 <li class="deviantart"><a href="#" target="_blank"></a></li>
                 <li class="google"><a href="#" target="_blank"></a></li>
-                <li class="stumble"><a href="#" target="_blank"></a></li>
+                <li class="stumble"><a href="#" target="_blank"></a></li -->
             </ul>
 
         </div>
