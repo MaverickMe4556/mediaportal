@@ -360,7 +360,7 @@ img.candidate-image:hover,
 input[type="password"],
 input[type="text"],
 textarea {
-  
+
   padding-left: 10px;
   padding-right: 10px;
   border: 1px solid #dcdcdc;
@@ -1546,6 +1546,7 @@ form.newsletter input[type="submit"]:hover {
   min-height: 164px;
 }
 .timelines .campaign-trail-list-item {
+  heigth: 200px;
   width: 100%;
   list-style: none;
 }
