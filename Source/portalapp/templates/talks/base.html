@@ -26,6 +26,7 @@
         <!-- Political press has 4 skins, but you can use only one of them -->
         <link href="{% static 'css/skins/default.css' %}" rel="stylesheet" media="all">
         <!--<link rel="stylesheet" href="{% static 'css/talks.css' %}">-->
+       {% block extrastyles %}{% endblock %}
 
     </head>
 
@@ -44,7 +45,7 @@
 
         <div class="donate-now clearfix">
 
-            <a target="_blank" title="Donate Now" href="#">Log In</a>
+            <a target="_blank" title="login" href="#">Log In</a>
 
         </div>
 
@@ -89,17 +90,17 @@
 
 
 
-					 <li><a href="{% url 'album_list' %}">Gallery</a>
+                     <li><a href="{% url 'album_list' %}">Gallery</a>
 
-                    </li>
+                              </li>
 
-                    <li><a href="{% url 'events' %}">Events</a>
+                              <li><a href="{% url 'events' %}">Events</a>
 
 
 
-                    </li>
+                              </li>
 
-                    <li><a href="{% url 'pressrelease' %}">Press Realese</a>
+                              <li><a href="{% url 'pressrelease' %}">Press Realese</a>
 
 
 
