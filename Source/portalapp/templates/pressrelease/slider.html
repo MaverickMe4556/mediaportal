@@ -8,7 +8,8 @@
     <!-- .quote -->
     <div class="quote">
       <blockquote>
-
+        <p>If our country is worth dying for in time of war let us resolve that it is truly worth living for in time of peace.</p>
+                        <span class="author"><span class="line left"></span>HAMILTON FISH<span class="line right"></span></span>
         <!--span class="author"><span class="line left"></span>HAMILTON FISH<span class="line right"></span></span-->
       </blockquote>
     </div>
@@ -18,7 +19,7 @@
 
       <div class="col-lg-12">
 
-        <div class="home-flexslider variation-2">
+        <div class="home-flexslider variation-3">
 
           <!-- Slider -->
           <div class="flexslider">
@@ -28,8 +29,8 @@
                 {% for slider_phto in slider_photo %}
                 <li>
                   <div class="slide-image">
-                    <a href="{{pressrelease.content.url}}" title="{{pressrelease.title}}">
-                      <img height=50% src="{{slider_phto.image.url}}" alt="alt text for release 1" draggable="false">
+                    <a href="{{pressrelease.cntent.url}}" title="{{pressrelease.title}}">
+                      <img height=100% src="{{slider_phto.image.url}}" alt="alt text for release 1" draggable="false">
                     </a>
                   </div>
 
@@ -129,51 +130,37 @@
 
         <div class="row">
           <div role="main" class="main col-lg-8 col-md-8">
-
+            {% for pressrelease in pressreleases %}
                             <header>
-                                <h2 class="post-title"><a href="#">AVISHKAR</a></h2>
+                                <h2 class="post-title"><a href="{% url 'release_unique' pk=pressrelease.pk %}">{{pressrelease.Title}}</a></h2>
                                 <div class="post-meta clearfix">
-                                    <span>By</span> <a rel="author" title="Posts by John Doe" href="#">IIIT Hyderabad</a>
-                                    <span class="date"> on October 01, 2013 </span>
-                                    <span class="category">in <a title="View all posts in Culture" href="#">T Hub</a></span>
+                                    <span class="date">{{pressrelease.date}} </span>
                                 </div><!-- end of post meta -->
                             </header>
                             <figure>
-                                <a title="Featured Dolor Ipsum Post" href="#">
-                                    <img alt="8th-post-featured" class="candidate-image wp-post-image" src="{% static 'images/13.jpg' %}"  width="754px" height="472px"   >
+                                <a title="{{pressrelease.Title}}" href="{% url 'release_unique' pk=pressrelease.pk %}">
+                                    <img alt="8th-post-featured" class="candidate-image wp-post-image" src="{{pressrelease.image.url}}"  width="754px" height="472px"   >
                                 </a>
                             </figure>
-                            <p>An acceleration program for startups working with AI, IA and AR/VR...Focus on research based startups...10L seed money in convertible notes.</p>    <a class="pp-btn" href="#">Read More</a>
+                            <br>{{pressrelease.summary}}
+                             <br>
+                             <br>
+                             <a class="pp-btn" href="{% url 'release_unique' pk=pressrelease.pk %}">Read More</a>
 
                             <br>
                             <br>
                             <br>
+              {% endfor %}
 <div class="row post-grid-2-col">
 {% for talk in talks %}
 
     <div class="col-lg-6 col-md-6  col-sm-6  col-xs-6">
 
-<header>
-<h3 class="post-title" style="white-space: nowrap; overflow: hidden;"><a href="{% url 'talk_part' pk=talk.pk %}" title = "{{talk.topic}}"  >{{talk.topic}}</a></h3>
-
-                            <div class="post-meta clearfix">
-
-                                <span>By</span> <a rel="author" title="Speaker" href="#">{{talk.speaker}}</a>
-
-                                    <br>
-                                <span class="date"> {{talk.date_and_time}}</span>
-                                  <br>
-                                <span class="category">in <a title="Venue" href="#">{{talk.venue}}</a></span>
-
-                            </div><!-- end of post meta -->
-
-                        </header>
-
 <figure>
 <br>
                             <a title="{{talk.speaker}}" href="#">
 
-<img src="{{ talk.image.url }}" class="candidate-image wp-post-image" alt="{{talk.speaker}}" width="354px" height="200px" />
+<img src="{{ talk.image.url }}" class="candidate-image wp-post-image" alt="{{talk.speaker}}" width="100%" height="200px" />
 
        </a>
 
@@ -183,7 +170,28 @@
 
 
 
-<a class="read-more" href="{% url 'talk_part' pk=talk.pk %}">...Read </a>
+                            <div class="post-meta clearfix" style="background-color: #e8e9ef;padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;" >
+
+<center><h4 class="post-title" style="font-size:21px; font-weight: 700;align="center";" ><a href="{% url 'talk_part' pk=talk.pk %}" title = "{{talk.topic}}"  > {{talk.topic|truncatechars_html:28}}</a></h4></center>
+                                <center><span>By</span> <a rel="author" title="Speaker" href="#">{{talk.speaker}}</a></center>
+
+
+                              <center>  <span class="date"> {{talk.date_and_time}}</span></center>
+
+                              <center>  <span class="category">in <a title="Venue" href="#">{{talk.venue}}</a></span></center>
+                                <br>
+                                <p>{{talk.abstract|truncatechars:105}}</p>
+<a class="pp-btn grey" href="{% url 'talk_part' pk=talk.pk %}">Read More</a>
+
+                            </div><!-- end of post meta -->
+
+
+
+
+
+
+
+
 
 
                 </div>
@@ -309,8 +317,28 @@
                 </div><!-- end of tabbed div -->
             </section>
 
+<section class="main col-lg-14 col-md-14">
+
+<a height=520px  class="twitter-timeline" href="https://twitter.com/iiit_hyderabad">Tweets by iiit_hyderabad</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
 
 
+
+            <section class="widget video-widget" id="video_widget-2">
+
+                <h3 class="title">Video</h3>
+
+                <div class="post-video">
+
+                    <div class="video-wrapper">
+
+                        <iframe width="500" alt="IIIT Video" height="281" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" src="https://www.youtube.com/embed/HqrVniJyzQs"></iframe>
+
+                    </div>
+
+                </div>
+
+            </section>
 
 
         </aside><!-- end of sidebar -->
@@ -320,7 +348,7 @@
 <!-- Time line (Trail) -->
 <div class="container timelines">
 
-    <h3 class="title-heading">Campaign Trail</h3>
+    <h3 class="title-heading">Upcoming Events</h3>
 
     <div class="timelines-wrapper">
         <ul class="cycle-slideshow"
@@ -332,7 +360,7 @@
                 >
 {% for event in events %}
             <li class="campaign-trail-list-item" data-cycle-pager-template="<li><a href=#>{{event.date}}</a></li>" >
-                <a href="#"><img height=4px position="absolute" clip="rect(0px,60px,20px,0px)" class="img-responsive" src="{{event.image.url}}" alt="Event Banner" /></a>
+                <a href="#"><img height="200px" width='100%'  class="img-responsive_line " src="{{event.image.url}}" alt="Event Banner"   /></a>
                 <div class="detail">
                     <h2>{{event.Title}}</h2>
                     <p>{{event.date}}</p>

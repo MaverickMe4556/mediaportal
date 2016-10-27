@@ -1,0 +1,46 @@
+{% extends 'talks/base.html' %}
+
+{% block content %}
+<!-- .header-bottom-wrapper -->
+<div class="header-bottom-wrapper">
+    <div class="container">
+        <div class="row">
+            <!-- Page Head -->
+            <div class="page-head col-lg-12">
+                <h2 class="page-title">Gallery</h2>
+            </div>
+            <!-- End Page Head -->
+        </div>
+    </div>
+</div><!-- End of .header-bottom-wrapper -->
+
+<!-- page-container -->
+<div class="page-container container">
+ 
+    <!-- Gallery Filter -->
+
+    <div id="gallery-container">
+        <div class="row gallery-4-columns isotope clearfix">
+           
+            {% include page_template %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+    <script>
+        $.endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollMargin: 20
+        });
+    </script>
+{% endblock %}
+
+		
+        </div>
+
+    </div>
+
+</div><!-- End of .page-container -->
+
+{% endblock  %}

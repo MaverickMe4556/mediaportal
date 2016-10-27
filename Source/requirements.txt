@@ -10,6 +10,7 @@ django-mptt==0.8.6
 django-polymorphic==0.8.1
 django-sekizai==0.10.0
 Django-Select2==4.3.2
+django-tinymce==2.4.0
 django-treebeard==4.0.1
 djangocms-admin-style==1.2.4
 djangocms-attributes-field==0.1.1
