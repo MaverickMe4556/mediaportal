@@ -25,7 +25,6 @@ class Photo(models.Model):
         ALL = 'ALL'
         CAMPUS = 'CAMPUS'
         CULT = 'CULT'
-        ACADS = 'ACADS'
         ALBUM_CHOICES = (
                 (ALL, 'All'),
                 (CAMPUS, 'Campus'),
