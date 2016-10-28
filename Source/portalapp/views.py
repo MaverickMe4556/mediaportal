@@ -28,10 +28,6 @@ def photo_list(request):
     talks = Register.objects.filter(date_and_time__gte = timezone.now()).order_by('date_and_time')
     return render(request, 'talks/talks_list.html', {'talks':talks})
 
-def talk_new(request):
-    if request.method == 'POST':
-      print 'request.post=', request.POST
-      form = TalkForm(request.POST, request.FILES)
       if form.is_valid():
          talk = form.save(commit=False)
          talk.author = request.user
@@ -40,11 +36,6 @@ def talk_new(request):
 
     else:
       form = TalkForm()
-    return render(request, 'talks/talk_edit.html', {'form': form})
-
-def talks_detail(request):
-   user = request.user
-   talks = Register.objects.filter(date_and_time__gte = timezone.now(), author = user).order_by('date_and_time')
    return render(request, 'talks/talks_detail.html', {'talks':talks})
 
 def talk_edit(request,pk):
