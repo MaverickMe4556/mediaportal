@@ -41,14 +41,6 @@ def talk_edit(request,pk):
    talk = get_object_or_404(Register, pk=pk)
    if request.method == "POST":
       form = TalkForm(request.POST, instance=talk)
-      if form.is_valid():
-        form.save()
-      return redirect('talks_detail')
-   else:
-       form = TalkForm(instance=talk)
-   return render(request, 'talks/talk_edit.html', {'form': form})
-
-def talk_part(request,pk):
   talk = get_object_or_404(Register, pk=pk)
   return render(request, 'talks/talk_part.html', {'talk': talk})
 """
