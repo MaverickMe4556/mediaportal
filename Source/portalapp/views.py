@@ -27,13 +27,7 @@ def photo_list(request):
 """def talks_list(request):
     talks = Register.objects.filter(date_and_time__gte = timezone.now()).order_by('date_and_time')
     return render(request, 'talks/talks_list.html', {'talks':talks})
-
       if form.is_valid():
-         talk = form.save(commit=False)
-         talk.author = request.user
-         talk.save()
-         return redirect('talks_list')
-
     else:
       form = TalkForm()
    return render(request, 'talks/talks_detail.html', {'talks':talks})
