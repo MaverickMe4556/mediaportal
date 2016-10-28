@@ -16,13 +16,6 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
-def photo_list(request):
-    queryset = Photo.objects.all()
-    context = {
-            "photos" : queryset,
-            }
-    return render(request, "talks/gallery.html", context)
-
 
 """def talks_list(request):
     talks = Register.objects.filter(date_and_time__gte = timezone.now()).order_by('date_and_time')
