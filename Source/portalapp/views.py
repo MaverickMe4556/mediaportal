@@ -15,20 +15,7 @@ def index(request):
         'latest_question_list': latest_question_list,
     }
     return HttpResponse(template.render(context, request))
-
-def photo_list(request):
-    queryset = Photo.objects.all()
-    context = {
-            "photos" : queryset,
-            }
-    return render(request, "talks/gallery.html", context)
-
-
-"""def talks_list(request):
-    talks = Register.objects.filter(date_and_time__gte = timezone.now()).order_by('date_and_time')
-    return render(request, 'talks/talks_list.html', {'talks':talks})
-
-def talk_new(request):
+'''
     if request.method == 'POST':
       print 'request.post=', request.POST
       form = TalkForm(request.POST, request.FILES)
